@@ -14,7 +14,7 @@
     SectionHeading,
     Seo
   } from '@kstar/ui';
-  import { home, organizations, site } from '@kstar/content';
+  import { home, organizations, photos, site, unsplash } from '@kstar/content';
 </script>
 
 <Seo title={home.seo.title} description={home.seo.description} />
@@ -242,13 +242,14 @@
       <div
         class="panel on-dark relative overflow-hidden px-6 py-14 text-center sm:px-12 lg:px-24 lg:py-20"
       >
-        <Picture
-          photo="stage"
-          ratio="21/9"
-          rounded="rounded-none"
-          overlay={false}
+        <img
+          src={unsplash(photos.stage.id, 1600, 700)}
+          srcset={`${unsplash(photos.stage.id, 900, 400)} 900w, ${unsplash(photos.stage.id, 1600, 700)} 1600w`}
           sizes="100vw"
-          class="pointer-events-none absolute inset-0 !aspect-auto opacity-20"
+          alt=""
+          loading="lazy"
+          decoding="async"
+          class="pointer-events-none absolute inset-0 size-full object-cover opacity-25"
         />
         <div
           class="pointer-events-none absolute inset-0"
