@@ -1,0 +1,19 @@
+services:
+  kstar-web:
+    build: .
+    container_name: kstar-server
+    restart: unless-stopped
+    environment:
+      # adapter-node needs the public origin to accept form POSTs behind Caddy.
+      ORIGIN: https://kstar.co.tz
+      PORT: 3000
+      HOST: 0.0.0.0
+      # Contact form delivery — set in ./.env on the server (never committed).
+      WEB3FORMS_ACCESS_KEY: ${WEB3FORMS_ACCESS_KEY:-}
+    networks:
+      - makutano-net
+    # No published ports: Caddy reaches this container over makutano-net.
+
+networks:
+  makutano-net:
+    external: true

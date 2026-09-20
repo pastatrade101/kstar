@@ -1,0 +1,22 @@
+{
+  "name": "@kstar/ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared Kstar design system — theme tokens and Svelte components.",
+  "exports": {
+    ".": {
+      "svelte": "./src/lib/index.ts",
+      "types": "./src/lib/index.ts",
+      "default": "./src/lib/index.ts"
+    },
+    "./styles/theme.css": "./src/lib/styles/theme.css",
+    "./components/*.svelte": "./src/lib/components/*.svelte"
+  },
+  "peerDependencies": {
+    "svelte": "^5.0.0"
+  },
+  "dependencies": {
+    "@kstar/content": "*"
+  }
+}

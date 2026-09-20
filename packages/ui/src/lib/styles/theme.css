@@ -1,0 +1,796 @@
+/* ==========================================================================
+   KSTAR THEME CORE
+   Merged from two templates:
+   - Plexify (Tailwind CSS business template) — palette, @theme token system,
+     pill buttons with icon capsule + flair hover, rounded section panels,
+     glass stat chips, vertical social rail, large display headlines.
+   - PRIVA (insurance template) — eyebrow "p-title" + small-border heading unit,
+     mask/cover hover cards, fun-fact counters, step timeline, warm accent.
+   ========================================================================== */
+
+:root {
+  /* BRAND */
+  --primary: #1a3b8f; /* deep blue — fills, buttons, brand mark */
+  --primary-light: #5b8af0; /* readable blue for text and icons on dark */
+  --primary-dark: #0e2359;
+  --secondary: #12224f; /* deep navy surface */
+
+  /* ACCENT */
+  --accent: #c6112f; /* brand red — highlights, eyebrows, key CTAs */
+  --accent-light: #f0364f; /* red for small text on dark */
+
+  /* SURFACES — semantic, so light mode only has to re-point them */
+  --body-bg: #050c22;
+  --fg: #ffffff; /* headings and strong text */
+  --muted: #a5b3d1; /* body copy */
+  --surface: #0a1433;
+  --surface-2: #0e1b41;
+  --border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --input-bg: rgba(255, 255, 255, 0.04);
+  --panel-shadow: none;
+
+  /* Bands that stay dark in both themes */
+  --band-dark: #081235;
+  --footer-bg: #03081a;
+
+  /* LIGHT SECTIONS (PRIVA) */
+  --light: #fafafa;
+  --light-bg: #f2f6fe;
+  --light-text: #606060;
+  --light-border: #e3e9f5;
+
+  /* ORGANIZATION ACCENTS */
+  --accent-foundation: #f5a524;
+  --accent-data: #17b6c7;
+
+  /* GRADIENTS */
+  --grad-canvas: linear-gradient(180deg, #0a1433 0%, #050c22 60%, #03081a 100%);
+  --grad-primary: linear-gradient(90deg, #1a3b8f 0%, #5b8af0 100%);
+  --grad-panel: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 100%);
+  --grad-divider: linear-gradient(90deg, rgba(198, 17, 47, 0.6) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+/* ---------- LIGHT THEME ----------
+   Tailwind resolves its `--color-*` tokens once at :root, so every flipped
+   token is declared twice: the raw value and the Tailwind alias. */
+:root[data-theme='light'] {
+  --body-bg: #f4f7fc;
+  --fg: #0e1b41;
+  --muted: #4b5d80;
+  --surface: #ffffff;
+  --surface-2: #eef3fb;
+  --border: rgba(14, 27, 65, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.78);
+  --input-bg: #ffffff;
+  --panel-shadow: 0 18px 40px rgba(14, 27, 65, 0.07);
+  --primary-light: #24499c;
+  --accent-light: #c6112f;
+  --grad-canvas: linear-gradient(180deg, #ffffff 0%, #f4f7fc 45%, #eef3fb 100%);
+
+  --color-fg: #0e1b41;
+  --color-muted: #4b5d80;
+  --color-bodybg: #f4f7fc;
+  --color-primarylight: #24499c;
+  --color-accentlight: #c6112f;
+}
+
+/* Panels that stay dark whatever the theme (hero bands, footer, photo cards). */
+.on-dark {
+  --fg: #ffffff;
+  --muted: #a5b3d1;
+  --border: rgba(255, 255, 255, 0.1);
+  --surface: #0e1b41;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --input-bg: rgba(255, 255, 255, 0.04);
+  --panel-shadow: none;
+  --primary-light: #5b8af0;
+  --accent-light: #f0364f;
+
+  --color-fg: #ffffff;
+  --color-muted: #a5b3d1;
+  --color-primarylight: #5b8af0;
+  --color-accentlight: #f0364f;
+  color: var(--muted);
+}
+
+@theme {
+  /* FONTS */
+  --font-base: 'Red Hat Display', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Red Hat Display', ui-sans-serif, system-ui, sans-serif;
+
+  /* COLORS */
+  --color-primary: var(--primary);
+  --color-primarylight: var(--primary-light);
+  --color-primarydark: var(--primary-dark);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-accentlight: var(--accent-light);
+
+  --color-bodybg: var(--body-bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-band: var(--band-dark);
+  --color-surface: var(--surface);
+  --color-surface2: var(--surface-2);
+
+  --color-light: var(--light);
+  --color-lightbg: var(--light-bg);
+  --color-lighttext: var(--light-text);
+  --color-lightborder: var(--light-border);
+
+  --color-foundation: var(--accent-foundation);
+  --color-data: var(--accent-data);
+
+  /* TYPE SCALE (Plexify) */
+  --text-2xs: 13px;
+  --text-2xs--line-height: 1.4;
+  --text-2sm: 15px;
+  --text-2sm--line-height: 1.6;
+  --text-2xl: 24px;
+  --text-2xl--line-height: 1.4;
+  --text-2xxl: 28px;
+  --text-2xxl--line-height: 1.3;
+  --text-3xl: 35px;
+  --text-3xl--line-height: 1.2;
+  --text-4xl: 40px;
+  --text-4xl--line-height: 1.15;
+  --text-4xxl: 50px;
+  --text-4xxl--line-height: 1.12;
+  --text-5xl: 60px;
+  --text-5xl--line-height: 1.08;
+  --text-6xl: 65px;
+  --text-6xl--line-height: 1.06;
+  --text-7xl: 72px;
+  --text-7xl--line-height: 1.04;
+
+  /* BREAKPOINTS (Bootstrap-aligned, as in both templates) */
+  --breakpoint-*: initial;
+  --breakpoint-xs: 425px;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+  --breakpoint-3xl: 1600px;
+
+  /* RADII */
+  --radius-2lg: 10px;
+  --radius-xxl: 14px;
+  --radius-2xl: 20px;
+  --radius-4xl: 30px;
+  --radius-6xl: 50px;
+
+  /* ANIMATION */
+  --animate-rotate-slow: rotate-slow 20s linear infinite;
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-to-top: to-top-from-bottom 0.8s ease 0s 1 normal forwards running;
+  --animate-to-right: to-right-from-left 0.5s forwards;
+}
+
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes to-top-from-bottom {
+  49% {
+    transform: translateY(-100%);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  51% {
+    opacity: 1;
+  }
+}
+
+@keyframes to-right-from-left {
+  49% {
+    transform: translateX(100%);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  51% {
+    opacity: 1;
+  }
+}
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary) transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--body-bg);
+  }
+
+  body {
+    font-family: var(--font-base);
+    /* Gradient on the top band only; the solid canvas carries the rest so the
+       page never falls back to white past the first viewport. */
+    background: var(--grad-canvas) no-repeat;
+    background-color: var(--body-bg);
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    color: var(--fg);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+
+  a {
+    transition: all 0.4s ease;
+  }
+
+  section {
+    position: relative;
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary-light);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* ---------- layout ---------- */
+  .container-k {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+    max-width: 1320px;
+  }
+
+  .section {
+    padding-block: 70px;
+  }
+  @media (min-width: 992px) {
+    .section {
+      padding-block: 110px;
+    }
+  }
+  .section-sm {
+    padding-block: 56px;
+  }
+
+  /* A light PRIVA-style band inside the dark Plexify canvas. */
+  .band-light {
+    background: var(--light-bg);
+    color: var(--light-text);
+  }
+  /* Header bar, once the page is scrolled. */
+  .header-solid {
+    background: color-mix(in srgb, var(--body-bg) 92%, transparent);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+  }
+  .band-light h1,
+  .band-light h2,
+  .band-light h3,
+  .band-light h4,
+  .band-light h5,
+  .band-light h6 {
+    color: #0e1b41;
+  }
+  .band-light .p-title {
+    color: var(--secondary);
+  }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--panel-shadow);
+  }
+  .panel-glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.08);
+  }
+
+  /* ---------- brand mark ---------- */
+  .logo-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--logo-size, 44px) + 12px);
+    height: calc(var(--logo-size, 44px) + 12px);
+    padding: 6px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    transition: transform 0.5s ease;
+  }
+  .group:hover .logo-chip {
+    transform: translateY(-2px);
+  }
+  :root[data-theme='light'] .logo-chip {
+    box-shadow: 0 8px 24px rgba(14, 27, 65, 0.1);
+  }
+
+  /* ---------- heading unit (PRIVA) ---------- */
+  .p-title {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 14px;
+  }
+  .p-title.invert {
+    color: var(--primary-light);
+  }
+
+  .small-border {
+    width: 50px;
+    height: 3px;
+    background: var(--accent);
+    display: block;
+    margin: 20px auto 30px;
+    border-radius: 3px;
+  }
+  .small-border.sm-left {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .headline-xl {
+    font-size: clamp(2.25rem, 1.2rem + 4.2vw, 4.5rem);
+    font-weight: 600;
+  }
+  .headline-lg {
+    font-size: clamp(1.9rem, 1.1rem + 2.6vw, 3.125rem);
+    font-weight: 600;
+  }
+  .headline-md {
+    font-size: clamp(1.5rem, 1rem + 1.4vw, 2rem);
+    font-weight: 600;
+  }
+
+  /* ---------- buttons (Plexify pill + capsule, PRIVA uppercase variant) ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+    min-height: 56px;
+    transition: all 0.45s ease;
+    cursor: pointer;
+  }
+  .btn-label {
+    position: relative;
+    z-index: 1;
+  }
+  .btn-capsule {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    flex: none;
+    transition: all 0.45s ease;
+  }
+
+  .btn-primary {
+    background: var(--primary);
+    color: #fff;
+    border: 1px solid var(--primary);
+  }
+  .btn-primary .btn-capsule {
+    background: #fff;
+    color: var(--primary);
+  }
+  .btn-primary:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .btn-primary:hover .btn-capsule {
+    background: #fff;
+    color: var(--accent);
+  }
+
+  .btn-light {
+    background: #fff;
+    color: var(--primary);
+    border: 1px solid #fff;
+  }
+  .btn-light .btn-capsule {
+    background: var(--primary);
+    color: #fff;
+  }
+  .btn-light:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .btn-light:hover .btn-capsule {
+    background: #fff;
+    color: var(--accent);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid color-mix(in srgb, var(--fg) 25%, transparent);
+  }
+  .btn-outline .btn-capsule {
+    background: color-mix(in srgb, var(--fg) 10%, transparent);
+    color: var(--fg);
+  }
+  .btn-outline:hover {
+    border-color: var(--primary-light);
+    color: var(--primary-light);
+  }
+  .btn-outline:hover .btn-capsule {
+    background: var(--primary);
+    color: #fff;
+  }
+
+  .btn-dark {
+    background: var(--secondary);
+    color: #fff;
+    border: 1px solid var(--secondary);
+  }
+  .btn-dark .btn-capsule {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-dark:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+  .btn-dark:hover .btn-capsule {
+    background: #fff;
+    color: var(--primary);
+  }
+
+  .btn-sm {
+    min-height: 46px;
+    font-size: 0.9375rem;
+    padding-left: 1.125rem;
+  }
+  .btn-sm .btn-capsule {
+    width: 34px;
+    height: 34px;
+  }
+
+  /* PRIVA text link with animated underline */
+  .btn-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: var(--accent-light);
+    position: relative;
+  }
+  .btn-line::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 2px;
+    width: 0;
+    background: var(--accent);
+    transition: width 0.4s ease;
+  }
+  .btn-line:hover::after {
+    width: 100%;
+  }
+  .btn-line:hover svg {
+    transform: translateX(4px);
+  }
+  .btn-line svg {
+    transition: transform 0.4s ease;
+  }
+
+  /* ---------- mask / cover card (PRIVA) ---------- */
+  .mask {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-2xl);
+    isolation: isolate;
+  }
+  .mask .cover {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    padding: 32px;
+    background: linear-gradient(180deg, rgba(5, 12, 34, 0.25) 0%, rgba(5, 12, 34, 0.95) 78%);
+    transition: background 0.5s ease;
+  }
+  .mask:hover .cover {
+    background: linear-gradient(180deg, rgba(26, 59, 143, 0.7) 0%, rgba(5, 12, 34, 0.97) 85%);
+  }
+  .mask .c-inner {
+    transform: translateY(14px);
+    transition: transform 0.5s ease;
+  }
+  .mask:hover .c-inner {
+    transform: translateY(0);
+  }
+  .mask .c-reveal {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      max-height 0.6s ease,
+      opacity 0.4s ease;
+  }
+  .mask:hover .c-reveal {
+    max-height: 220px;
+    opacity: 1;
+  }
+
+  /* ---------- feature / icon boxes ---------- */
+  .icon-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    background: rgba(91, 138, 240, 0.14);
+    color: var(--primary-light);
+    transition: all 0.45s ease;
+  }
+  .feature-card {
+    position: relative;
+    height: 100%;
+    padding: 34px 30px;
+    border-radius: var(--radius-2xl);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--panel-shadow);
+    transition: all 0.45s ease;
+  }
+  .feature-card:hover {
+    border-color: rgba(91, 138, 240, 0.45);
+    transform: translateY(-6px);
+  }
+  .feature-card:hover .icon-box {
+    background: var(--primary);
+    color: #fff;
+  }
+
+  /* counter-numbered card (Plexify content-counter) */
+  .counter-card {
+    counter-increment: k-counter;
+  }
+  .counter-card::before {
+    content: '0' counter(k-counter);
+    position: absolute;
+    top: 22px;
+    right: 26px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: color-mix(in srgb, var(--fg) 22%, transparent);
+  }
+  .counter-list {
+    counter-reset: k-counter;
+  }
+
+  /* ---------- step timeline (PRIVA tab_steps) ---------- */
+  .step-line {
+    position: relative;
+    padding-left: 68px;
+  }
+  .step-line::before {
+    content: '';
+    position: absolute;
+    left: 23px;
+    top: 48px;
+    bottom: -28px;
+    width: 1px;
+    background: linear-gradient(180deg, rgba(91, 138, 240, 0.55), rgba(91, 138, 240, 0));
+  }
+  .step-line:last-child::before {
+    display: none;
+  }
+  .step-dot {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(91, 138, 240, 0.12);
+    border: 1px solid rgba(91, 138, 240, 0.35);
+    color: var(--primary-light);
+    font-weight: 700;
+  }
+
+  /* ---------- forms ---------- */
+  .field-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--fg) 72%, transparent);
+    margin-bottom: 10px;
+  }
+  .field-input {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xxl);
+    padding: 15px 20px;
+    color: var(--fg);
+    font-size: 16px;
+    font-family: inherit;
+    transition: all 0.35s ease;
+  }
+  .field-input::placeholder {
+    color: color-mix(in srgb, var(--fg) 40%, transparent);
+  }
+  .field-input:focus {
+    border-color: var(--primary-light);
+    background: rgba(91, 138, 240, 0.08);
+    outline: none;
+  }
+  select.field-input option {
+    background: var(--surface);
+    color: var(--fg);
+  }
+  .field-error {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #ff8496;
+  }
+
+  /* ---------- marquee strip ---------- */
+  .marquee {
+    display: flex;
+    width: max-content;
+    animation: var(--animate-marquee);
+  }
+  .marquee-wrap:hover .marquee {
+    animation-play-state: paused;
+  }
+
+  /* ---------- nav ---------- */
+  .nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: color-mix(in srgb, var(--fg) 85%, transparent);
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 2px;
+    height: 2px;
+    width: 0;
+    background: var(--accent);
+    transform: translateX(-50%);
+    transition: width 0.4s ease;
+  }
+  .nav-link:hover,
+  .nav-link[aria-current='page'] {
+    color: var(--primary-light);
+  }
+  .nav-link:hover::after,
+  .nav-link[aria-current='page']::after {
+    width: 18px;
+  }
+
+  /* Only hide pre-reveal content when scripting can bring it back. */
+  @media (scripting: enabled) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+  }
+  .honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .marquee {
+      animation: none;
+    }
+  }
+}
+
+/* Organization accent theming.
+   `--color-*` is redeclared alongside `--primary` on purpose: Tailwind resolves
+   its theme vars once at :root, so utilities like `text-primary` would keep the
+   house lime unless the token is re-declared here too. */
+[data-accent='foundation'] {
+  --primary: var(--accent-foundation);
+  --primary-light: #ffc65c;
+  --accent: var(--accent-foundation);
+  --accent-light: #ffc65c;
+  --color-primary: var(--accent-foundation);
+  --color-primarylight: #ffc65c;
+  --color-accent: var(--accent-foundation);
+  --color-accentlight: #ffc65c;
+}
+[data-accent='data'] {
+  --primary: var(--accent-data);
+  --primary-light: #5fe0ec;
+  --accent: var(--accent-data);
+  --accent-light: #5fe0ec;
+  --color-primary: var(--accent-data);
+  --color-primarylight: #5fe0ec;
+  --color-accent: var(--accent-data);
+  --color-accentlight: #5fe0ec;
+}

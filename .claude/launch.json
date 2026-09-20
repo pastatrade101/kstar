@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "kstar-web",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "cd /Users/pastoryjoseph/Desktop/kstar-website/apps/web && node ../../node_modules/vite/bin/vite.js dev --port 5173"
+      ],
+      "port": 5173
+    }
+  ]
+}

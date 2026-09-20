@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+@import '@kstar/ui/styles/theme.css';
+
+/* Tailwind v4 scans the app by default — add the shared UI package explicitly. */
+@source "../../../packages/ui/src";
+@source "../../../packages/content/src";

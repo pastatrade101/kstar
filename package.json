@@ -1,0 +1,26 @@
+{
+  "name": "kstar-website",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Kstar International monorepo — SvelteKit web app, shared UI theme and website copy.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @kstar/web",
+    "build": "npm run build --workspace @kstar/web",
+    "preview": "npm run preview --workspace @kstar/web",
+    "check": "npm run check --workspace @kstar/web",
+    "format": "prettier --write .",
+    "lint": "prettier --check ."
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "prettier-plugin-svelte": "^3.3.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

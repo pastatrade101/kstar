@@ -1,0 +1,12 @@
+{
+  "name": "@kstar/content",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Structured website copy for Kstar International and its organizations.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "types": "./src/index.ts"
+}

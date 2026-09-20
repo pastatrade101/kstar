@@ -1,0 +1,13 @@
+node_modules
+**/node_modules
+.svelte-kit
+**/.svelte-kit
+build
+**/build
+.git
+.github
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
