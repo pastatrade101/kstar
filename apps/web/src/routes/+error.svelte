@@ -14,7 +14,7 @@
   description={notFound.text}
 />
 
-<section class="section flex min-h-[70vh] items-center pt-32">
+<section class="on-dark section flex min-h-[80vh] items-center bg-band pt-32">
   <div class="container-k">
     <div class="mx-auto max-w-3xl text-center">
       <span class="p-title">{is404 ? notFound.eyebrow : `Error ${page.status}`}</span>

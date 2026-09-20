@@ -24,10 +24,12 @@
   </span>
   {#if !compact}
     <span class="leading-none">
-      <span class="block text-lg font-bold tracking-tight text-fg sm:text-xl">{label}</span>
+      <span class="block whitespace-nowrap text-lg font-bold tracking-tight text-fg sm:text-xl"
+        >{label}</span
+      >
       {#if showTagline}
         <span
-          class="mt-1 block text-[9px] font-semibold uppercase leading-[1.35] tracking-[1.5px] text-primarylight sm:text-[10px] sm:tracking-[2px]"
+          class="mt-1 block text-[9px] font-semibold uppercase leading-[1.35] tracking-[1.5px] text-primarylight sm:tracking-[2px] xl:whitespace-nowrap xl:text-[9.5px] xl:tracking-[1.2px]"
         >
           {tagline}
         </span>

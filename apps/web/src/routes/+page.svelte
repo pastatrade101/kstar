@@ -28,7 +28,6 @@
   secondary={home.hero.secondary}
   supportingLink={home.hero.supportingLink}
   stats={home.hero.stats}
-  socials={site.socials}
   photo="hero"
 />
 

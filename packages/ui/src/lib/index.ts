@@ -18,6 +18,5 @@ export { default as PageHero } from './components/PageHero.svelte';
 export { default as Reveal } from './components/Reveal.svelte';
 export { default as SectionHeading } from './components/SectionHeading.svelte';
 export { default as Seo } from './components/Seo.svelte';
-export { default as SocialRail } from './components/SocialRail.svelte';
 export { default as ThemeToggle } from './components/ThemeToggle.svelte';
 export { default as StepList } from './components/StepList.svelte';

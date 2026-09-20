@@ -43,7 +43,6 @@ export const nav: NavItem[] = [
       { label: 'ClickData Tanzania', href: '/clickdata-tanzania' }
     ]
   },
-  { label: 'Updates', href: '/updates' },
   { label: 'Careers', href: '/careers' },
   { label: 'Contact', href: '/contact' }
 ];

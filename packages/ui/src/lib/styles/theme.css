@@ -711,10 +711,17 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 10px 16px;
-    font-size: 1rem;
+    padding: 10px 10px;
+    font-size: 0.9375rem;
     font-weight: 500;
+    white-space: nowrap;
     color: color-mix(in srgb, var(--fg) 85%, transparent);
+  }
+  @media (min-width: 1400px) {
+    .nav-link {
+      padding: 10px 14px;
+      font-size: 1rem;
+    }
   }
   .nav-link::after {
     content: '';

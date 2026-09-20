@@ -54,7 +54,7 @@
 
 <header
   class={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-    scrolled ? 'header-solid backdrop-blur-xl' : ''
+    scrolled ? 'header-solid backdrop-blur-xl' : 'on-dark'
   }`}
 >
   <div class="container-k">
